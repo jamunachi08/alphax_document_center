@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "creation": "2026-06-16 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "monthly_archive_section",
+  "enable_monthly_archive",
+  "archive_document_type",
+  "archive_print_format",
+  "archive_output_type",
+  "notifications_section",
+  "notify_on_completion",
+  "notification_recipients",
+  "defaults_section",
+  "default_print_format"
+ ],
+ "fields": [
+  {
+   "fieldname": "monthly_archive_section",
+   "fieldtype": "Section Break",
+   "label": "Monthly Archive"
+  },
+  {
+   "default": "0",
+   "description": "Automatically archive last month's documents on the 1st of each month.",
+   "fieldname": "enable_monthly_archive",
+   "fieldtype": "Check",
+   "label": "Enable Monthly Archive"
+  },
+  {
+   "default": "Sales Invoice",
+   "depends_on": "enable_monthly_archive",
+   "fieldname": "archive_document_type",
+   "fieldtype": "Link",
+   "label": "Archive Document Type",
+   "options": "DocType"
+  },
+  {
+   "depends_on": "enable_monthly_archive",
+   "fieldname": "archive_print_format",
+   "fieldtype": "Link",
+   "label": "Archive Print Format",
+   "options": "Print Format"
+  },
+  {
+   "default": "ZIP of PDFs",
+   "depends_on": "enable_monthly_archive",
+   "fieldname": "archive_output_type",
+   "fieldtype": "Select",
+   "label": "Archive Output Type",
+   "options": "Single PDF\nZIP of PDFs"
+  },
+  {
+   "fieldname": "notifications_section",
+   "fieldtype": "Section Break",
+   "label": "Notifications"
+  },
+  {
+   "default": "1",
+   "fieldname": "notify_on_completion",
+   "fieldtype": "Check",
+   "label": "Notify on Completion"
+  },
+  {
+   "depends_on": "notify_on_completion",
+   "description": "Comma-separated email addresses (in addition to the job requester).",
+   "fieldname": "notification_recipients",
+   "fieldtype": "Small Text",
+   "label": "Notification Recipients"
+  },
+  {
+   "fieldname": "defaults_section",
+   "fieldtype": "Section Break",
+   "label": "Defaults"
+  },
+  {
+   "fieldname": "default_print_format",
+   "fieldtype": "Link",
+   "label": "Default Print Format",
+   "options": "Print Format"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-06-16 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Document Center",
+ "name": "Document Center Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

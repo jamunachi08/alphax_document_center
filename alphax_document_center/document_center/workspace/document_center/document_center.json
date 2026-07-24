@@ -1,0 +1,80 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"adc_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Document Center</span>\",\"col\":12}},{\"id\":\"adc_sc_header\",\"type\":\"header\",\"data\":{\"text\":\"<span>Shortcuts</span>\",\"col\":12}},{\"id\":\"adc_sc1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Document Center\",\"col\":4}},{\"id\":\"adc_sc2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Bulk Document Jobs\",\"col\":4}},{\"id\":\"adc_sc3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Settings\",\"col\":4}}]",
+ "creation": "2026-06-16 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "file",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Document Center",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Documents",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bulk Document Job",
+   "link_count": 0,
+   "link_to": "Bulk Document Job",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Document Center Settings",
+   "link_count": 0,
+   "link_to": "Document Center Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-06-16 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Document Center",
+ "name": "Document Center",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "",
+   "label": "Document Center",
+   "link_to": "alphax-document-center",
+   "type": "Page"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Bulk Document Jobs",
+   "link_to": "Bulk Document Job",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "",
+   "label": "Settings",
+   "link_to": "Document Center Settings",
+   "type": "DocType"
+  }
+ ],
+ "title": "Document Center"
+}

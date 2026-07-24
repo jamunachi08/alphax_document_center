@@ -1,0 +1,20 @@
+{
+ "creation": "2026-06-16 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "icon": "icon-copy",
+ "idx": 0,
+ "modified": "2026-06-16 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Document Center",
+ "name": "alphax-document-center",
+ "owner": "Administrator",
+ "page_name": "alphax-document-center",
+ "roles": [
+  {"role": "System Manager"},
+  {"role": "Accounts Manager"},
+  {"role": "Accounts User"}
+ ],
+ "standard": "Yes",
+ "title": "Alpha-X Document Center"
+}

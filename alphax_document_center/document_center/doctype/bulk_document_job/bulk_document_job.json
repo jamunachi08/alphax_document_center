@@ -1,0 +1,442 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-06-16 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "job_title",
+  "section_break_filters",
+  "document_type",
+  "selection_mode",
+  "company",
+  "column_break_filters",
+  "party_type",
+  "party",
+  "section_break_date",
+  "from_date",
+  "to_date",
+  "from_document",
+  "to_document",
+  "column_break_date",
+  "date_field",
+  "additional_filters",
+  "include_drafts",
+  "section_break_selection",
+  "selected_documents",
+  "selection_help",
+  "section_break_output",
+  "print_format",
+  "letter_head",
+  "column_break_output",
+  "output_type",
+  "email_documents",
+  "section_break_label",
+  "label_mode",
+  "label_preset",
+  "label_width_mm",
+  "column_break_label",
+  "label_height_mm",
+  "label_margin_mm",
+  "label_dpi",
+  "suppress_letter_head",
+  "section_break_status",
+  "status",
+  "progress",
+  "total_documents",
+  "processed_documents",
+  "column_break_status",
+  "failed_documents",
+  "started_at",
+  "completed_at",
+  "requested_by",
+  "section_break_file",
+  "generated_file",
+  "output_summary",
+  "error_log"
+ ],
+ "fields": [
+  {
+   "default": "ADC-JOB-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "ADC-JOB-.YYYY.-"
+  },
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Job Title"
+  },
+  {
+   "fieldname": "section_break_filters",
+   "fieldtype": "Section Break",
+   "label": "Selection"
+  },
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Document Type",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.selection_mode!='Selected Documents'",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "column_break_filters",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.selection_mode!='Selected Documents'",
+   "fieldname": "party_type",
+   "fieldtype": "Select",
+   "label": "Party Type",
+   "options": "\nCustomer\nSupplier"
+  },
+  {
+   "depends_on": "eval:doc.selection_mode!='Selected Documents' && doc.party_type",
+   "fieldname": "party",
+   "fieldtype": "Dynamic Link",
+   "label": "Party",
+   "options": "party_type"
+  },
+  {
+   "depends_on": "eval:doc.selection_mode!='Selected Documents'",
+   "fieldname": "section_break_date",
+   "fieldtype": "Section Break",
+   "label": "Date Range"
+  },
+  {
+   "depends_on": "eval:doc.selection_mode!='Selected Documents'",
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "reqd": 0
+  },
+  {
+   "depends_on": "eval:doc.selection_mode!='Selected Documents'",
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "reqd": 0
+  },
+  {
+   "fieldname": "column_break_date",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.selection_mode!='Selected Documents'",
+   "description": "Optional. Override the date field used for filtering (e.g. posting_date / transaction_date).",
+   "fieldname": "date_field",
+   "fieldtype": "Data",
+   "label": "Date Field"
+  },
+  {
+   "depends_on": "eval:doc.selection_mode!='Selected Documents'",
+   "description": "Optional JSON of extra Frappe filters, e.g. {\"status\": \"Paid\"}",
+   "fieldname": "additional_filters",
+   "fieldtype": "Code",
+   "label": "Additional Filters (JSON)",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "section_break_output",
+   "fieldtype": "Section Break",
+   "label": "Output"
+  },
+  {
+   "description": "Leave blank to use the default print format for the document type.",
+   "fieldname": "print_format",
+   "fieldtype": "Link",
+   "label": "Print Format",
+   "options": "Print Format",
+   "reqd": 0
+  },
+  {
+   "fieldname": "letter_head",
+   "fieldtype": "Link",
+   "label": "Letter Head",
+   "options": "Letter Head"
+  },
+  {
+   "fieldname": "column_break_output",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Single PDF",
+   "fieldname": "output_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Output Type",
+   "options": "Single PDF\nZIP of PDFs",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Email each party their own documents (requires party email on file).",
+   "fieldname": "email_documents",
+   "fieldtype": "Check",
+   "label": "Email Documents to Parties"
+  },
+  {
+   "fieldname": "section_break_status",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nQueued\nRunning\nCompleted\nPartially Completed\nFailed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "progress",
+   "fieldtype": "Percent",
+   "label": "Progress",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_documents",
+   "fieldtype": "Int",
+   "label": "Total Documents",
+   "read_only": 1
+  },
+  {
+   "fieldname": "processed_documents",
+   "fieldtype": "Int",
+   "label": "Processed Documents",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "failed_documents",
+   "fieldtype": "Int",
+   "label": "Failed Documents",
+   "read_only": 1
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "label": "Started At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "label": "Requested By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_file",
+   "fieldtype": "Section Break",
+   "label": "Result"
+  },
+  {
+   "fieldname": "generated_file",
+   "fieldtype": "Attach",
+   "label": "Generated File",
+   "read_only": 1
+  },
+  {
+   "fieldname": "error_log",
+   "fieldtype": "Long Text",
+   "label": "Error Log",
+   "read_only": 1
+  },
+  {
+   "default": "By Filters",
+   "fieldname": "selection_mode",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Selection Mode",
+   "options": "By Filters\nSelected Documents",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.selection_mode!='Selected Documents'",
+   "description": "Include draft documents as well as submitted ones.",
+   "fieldname": "include_drafts",
+   "fieldtype": "Check",
+   "label": "Include Drafts"
+  },
+  {
+   "depends_on": "eval:doc.selection_mode=='Selected Documents'",
+   "fieldname": "section_break_selection",
+   "fieldtype": "Section Break",
+   "label": "Selected Documents"
+  },
+  {
+   "depends_on": "eval:doc.selection_mode=='Selected Documents'",
+   "fieldname": "selected_documents",
+   "fieldtype": "Table",
+   "label": "Documents",
+   "options": "Bulk Document Item"
+  },
+  {
+   "depends_on": "eval:doc.selection_mode=='Selected Documents'",
+   "fieldname": "selection_help",
+   "fieldtype": "HTML",
+   "label": "Selection Help",
+   "options": "<div class='text-muted small'>Use <b>Pick Documents</b> above to choose records visually, or add rows manually.</div>"
+  },
+  {
+   "depends_on": "eval:doc.selection_mode!='Selected Documents'",
+   "description": "Optional. Print a continuous range of document numbers, e.g. ACC-SINV-2026-00010 to ACC-SINV-2026-00250.",
+   "fieldname": "from_document",
+   "fieldtype": "Data",
+   "label": "From Document No"
+  },
+  {
+   "depends_on": "eval:doc.selection_mode!='Selected Documents'",
+   "fieldname": "to_document",
+   "fieldtype": "Data",
+   "label": "To Document No"
+  },
+  {
+   "description": "What the job actually produced. Empty means no file was created.",
+   "fieldname": "output_summary",
+   "fieldtype": "Data",
+   "label": "Output",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_label",
+   "fieldtype": "Section Break",
+   "label": "Label / Continuous Roll"
+  },
+  {
+   "default": "0",
+   "description": "Size each PDF page to the label itself, with no margins. Required for roll/sticker printers.",
+   "fieldname": "label_mode",
+   "fieldtype": "Check",
+   "label": "Label Mode"
+  },
+  {
+   "default": "50 x 28 mm (1.97 x 1.10 in)",
+   "depends_on": "label_mode",
+   "fieldname": "label_preset",
+   "fieldtype": "Select",
+   "label": "Label Size",
+   "options": "Custom\n50 x 28 mm (1.97 x 1.10 in)\n50 x 25 mm\n40 x 30 mm\n57 x 32 mm\n76 x 25 mm\n100 x 50 mm\n100 x 150 mm (shipping)"
+  },
+  {
+   "default": "50",
+   "depends_on": "label_mode",
+   "fieldname": "label_width_mm",
+   "fieldtype": "Float",
+   "label": "Width (mm)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_label",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "28",
+   "depends_on": "label_mode",
+   "fieldname": "label_height_mm",
+   "fieldtype": "Float",
+   "label": "Height (mm)",
+   "precision": "2"
+  },
+  {
+   "default": "0",
+   "depends_on": "label_mode",
+   "fieldname": "label_margin_mm",
+   "fieldtype": "Float",
+   "label": "Margin (mm)",
+   "precision": "2"
+  },
+  {
+   "default": "300",
+   "depends_on": "label_mode",
+   "description": "300 suits most thermal label printers.",
+   "fieldname": "label_dpi",
+   "fieldtype": "Int",
+   "label": "DPI"
+  },
+  {
+   "default": "1",
+   "depends_on": "label_mode",
+   "description": "Letter heads do not belong on a sticker.",
+   "fieldname": "suppress_letter_head",
+   "fieldtype": "Check",
+   "label": "Suppress Letter Head"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-16 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Document Center",
+ "name": "Bulk Document Job",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
